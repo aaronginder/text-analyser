@@ -172,3 +172,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+.vscode
+__MACOSX
+.DS_Atore
+data/trustpilot_reviews_2005.csv
