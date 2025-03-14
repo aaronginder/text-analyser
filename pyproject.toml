@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry-dynamic-versioning]
@@ -12,20 +12,33 @@ tagged-metadata = true
 [tool.poetry]
 name = "text-analyser"
 version = "0.1.0"
-description = "Predict sentiment of text and topic categorisation"
-authors = ["Aaron Ginder <aaronginder@hotmail.co.uk>"]
+description = "A tool for sentiment analysis and topic categorization"
+authors = ["Your Name <your.email@example.com>"]
 license = "MIT"
 readme = "README.md"
-python = ">=3.13"
 package-mode = false
-version_source = "commit"
-commit_parser = "conventional"
-branch = "main"
-commit_message = "chore(release): {version} [skip ci]"
-tag_format = "v{version}"
-major_on_zero = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+pyspark = "^3.5.5"
+# other dependencies
+nltk = "^3.9.1"
+matplotlib = "^3.10.1"
+seaborn = "^0.13.2"
+pandas = "^2.2.3"
+
+[tool.poetry.group.dev.dependencies]
+# dev dependencies
 
 # Semantic release configuration
+[tool.semantic_release]
+version_source = "commit"
+branch = "main"
+tag_format = "v{version}"
+major_on_zero = false
+commit_parser = "angular"
+commit_message = "chore(release): {version}"
+
 [tool.semantic_release.branches.main]
 match = "main"
 prerelease = false
@@ -66,13 +79,15 @@ section = "Bug Fixes"
 type = "perf"
 section = "Performance"
 
-# Git configuration
+# Git configuration for semantic-release
+[tool.semantic_release.git]
 commit_message = "chore(release): {version} [skip ci]"
 tag_message = "Release {version}"
 
-# GitHub configuration
-github_repository = "aaronginder/cloud-infrastructure"
-github_token = true
+# GitHub configuration for semantic-release
+[tool.semantic_release.github]
+repository = "aaronginder/text-analyser"
+token = true
 
 [tool.semantic_release.publish]
 upload_to_repository = true
