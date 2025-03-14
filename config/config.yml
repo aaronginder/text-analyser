@@ -1,0 +1,17 @@
+config:
+  pyspark:
+    appName: "ml-strokes-pipeline"
+  data:
+    input: data/healthcare-dataset-stroke-data.csv
+    header: True
+    schema:
+      - ""
+  models:
+    naive_bayes:
+      tuning: ""
+    logistic_regression:
+      tuning: ""
+    random_forest:
+      tuning: ""
+    gradient_boosted_tree:
+      tuning: ""

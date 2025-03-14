@@ -1,0 +1,79 @@
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "semver"
+dirty = false # do not version dev builds
+tagged-metadata = true
+
+[tool.poetry]
+name = "text-analyser"
+version = "0.1.0"
+description = "Predict sentiment of text and topic categorisation"
+authors = ["Aaron Ginder <aaronginder@hotmail.co.uk>"]
+license = "MIT"
+readme = "README.md"
+python = ">=3.13"
+package-mode = false
+version_source = "commit"
+commit_parser = "conventional"
+branch = "main"
+commit_message = "chore(release): {version} [skip ci]"
+tag_format = "v{version}"
+major_on_zero = false
+
+# Semantic release configuration
+[tool.semantic_release.branches.main]
+match = "main"
+prerelease = false
+
+[tool.semantic_release.branches.develop]
+match = "develop"
+prerelease = true
+prerelease_token = "dev"
+
+[tool.semantic_release.branches.alpha]
+prerelease = true
+prerelease_token = "alpha"
+
+[tool.semantic_release.branches.beta]
+prerelease = true
+prerelease_token = "beta"
+
+[tool.semantic_release.branches.rc]
+prerelease = true
+prerelease_token = "rc"
+
+[tool.semantic_release.changelog]
+template_dir = "templates"
+exclude_commit_patterns = ["chore*"]
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+
+[[tool.semantic_release.changelog.sections]]
+type = "feat"
+section = "Features"
+
+[[tool.semantic_release.changelog.sections]]
+type = "fix"
+section = "Bug Fixes"
+
+[[tool.semantic_release.changelog.sections]]
+type = "perf"
+section = "Performance"
+
+# Git configuration
+commit_message = "chore(release): {version} [skip ci]"
+tag_message = "Release {version}"
+
+# GitHub configuration
+github_repository = "aaronginder/cloud-infrastructure"
+github_token = true
+
+[tool.semantic_release.publish]
+upload_to_repository = true
+build_command = ""
